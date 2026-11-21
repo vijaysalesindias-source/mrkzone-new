@@ -229,7 +229,7 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                     selectedImage === idx ? 'border-amazon-orange shadow' : 'border-gray-200 hover:border-gray-400'
                   }`}
                 >
-                  <img src={imgUrl} alt={`Thumbnail ${idx}`} className="max-h-full max-w-full object-contain" />
+                  <img src={resolveMediaUrl(imgUrl)} alt={`Thumbnail ${idx}`} className="max-h-full max-w-full object-contain" />
                 </button>
               ))}
             </div>
