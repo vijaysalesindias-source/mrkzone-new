@@ -1,0 +1,42 @@
+# Project exclude paths
+/backend/target/
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build files
+dist/
+build/
+backend/target/
+
+# Local system files
+.DS_Store
+.idea/
+
+# Local database files
+*.mv.db
+*.trace.db
+
+# Local database and uploaded files
+/data/
+/backend/data/
+/uploads/
+/backend/uploads/
+
+# Logs and temporary files
+*.log
+.DS_Store
+
+# Old backup and temporary source files
+*.backup
+*.before-*
+*.bak
+
+# Local backup files
+/backend/pom-backup.xml
+/frontend/src/services/api.js.backup-before-local-api

@@ -1,0 +1,17 @@
+RENDER SETTINGS FOR THIS PROJECT
+
+Frontend service (mrkzone-fixed-1):
+  VITE_API_URL=https://mrkzone-fixed.onrender.com/api
+
+Backend service (mrkzone-fixed):
+  FRONTEND_URL=https://mrkzone-fixed-1.onrender.com
+  UPLOAD_DIR=/var/data/uploads
+
+Attach a Render Persistent Disk to the BACKEND service with mount path:
+  /var/data
+
+The backend saves product files under /var/data/uploads/products and serves
+them at /uploads/products/<filename>. Do not append /bakend or /frnted to
+the service URLs; those words are not part of the service domains.
+
+After setting the environment variables and disk, redeploy both services.
