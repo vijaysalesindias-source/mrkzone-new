@@ -9,6 +9,7 @@ import com.mrkzone.repository.BrandRepository;
 import com.mrkzone.repository.CategoryRepository;
 import com.mrkzone.repository.ProductImageRepository;
 import com.mrkzone.repository.ProductRepository;
+import com.mrkzone.repository.ReviewRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,15 +26,18 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
     private final BrandRepository brandRepository;
     private final ProductImageRepository productImageRepository;
+    private final ReviewRepository reviewRepository;
 
     public ProductService(ProductRepository productRepository,
                           CategoryRepository categoryRepository,
                           BrandRepository brandRepository,
-                          ProductImageRepository productImageRepository) {
+                          ProductImageRepository productImageRepository,
+                          ReviewRepository reviewRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
         this.brandRepository = brandRepository;
         this.productImageRepository = productImageRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     public Page<Product> searchProducts(String keyword,
@@ -281,6 +285,7 @@ public class ProductService {
     @Transactional
     public void deleteProduct(Long id) {
         Product product = getProductById(id);
+        reviewRepository.deleteByProductId(id);
         productRepository.delete(product);
     }
 }
