@@ -61,7 +61,7 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
       </div>
 
       {/* Product Image */}
-      <div className="w-full h-32 sm:h-48 flex items-center justify-center overflow-hidden mb-2 sm:mb-3 p-1 sm:p-2 bg-white">
+      <div className="w-full h-40 sm:h-48 flex items-center justify-center overflow-hidden mb-2 sm:mb-3 p-1 sm:p-2 bg-white">
         <img
           src={resolveMediaUrl(primaryImg)}
           alt={product.title}
