@@ -72,7 +72,7 @@ export default function HomePage({ onNavigate }) {
           {homepageProducts.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 mt-4 items-stretch">
               {homepageProducts.map((product, index) => (
-                <ProductCard key={product.id} product={product} onNavigate={onNavigate} imagePriority={index < 2} />
+                <ProductCard key={product.id} product={product} onNavigate={onNavigate} imagePriority={index < 2} homePage />
               ))}
             </div>
           ) : (
