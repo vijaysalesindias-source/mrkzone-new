@@ -1,4 +1,4 @@
-cimport React from 'react';
+import React from 'react';
 import { resolveMediaUrl } from '../services/api';
 import { Star, Heart, ShoppingCart, Zap, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
