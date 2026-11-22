@@ -35,10 +35,10 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
   return (
     <div
       onClick={() => onNavigate('product-detail', { productId: product.id, slug: product.slug })}
-      className="bg-white rounded-lg p-2 sm:p-3.5 border border-gray-200 hover:shadow-xl transition-all duration-200 flex flex-col justify-between cursor-pointer group relative min-w-0"
+      className="bg-white rounded-xl p-3 sm:p-4 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-200 flex flex-col justify-between cursor-pointer group relative min-w-0"
     >
       {/* Top Badges: Discount & Wishlist */}
-      <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+      <div className="flex items-center justify-between mb-2 sm:mb-3">
         {discount > 0 ? (
           <span className="bg-amazon-dealRed text-white text-[9px] sm:text-[11px] font-black px-1.5 sm:px-2 py-0.5 rounded uppercase">
             {discount}% OFF
@@ -56,12 +56,12 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
           }`}
           title={inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
         >
-          <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWishlist ? 'fill-current' : ''}`} />
+          <Heart className={`w-5 h-5 sm:w-5 sm:h-5 ${inWishlist ? 'fill-current' : ''}`} />
         </button>
       </div>
 
       {/* Product Image */}
-      <div className="w-full h-40 sm:h-48 flex items-center justify-center overflow-hidden mb-2 sm:mb-3 p-1 sm:p-2 bg-white">
+      <div className="w-full aspect-square flex items-center justify-center overflow-hidden mb-3 sm:mb-4 p-2 sm:p-3 bg-gray-50 rounded-xl">
         <img
           src={resolveMediaUrl(primaryImg)}
           alt={product.title}
@@ -69,7 +69,7 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
           height="400"
           decoding="async"
           fetchpriority={imagePriority ? 'high' : 'auto'}
-          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
           loading="eager"
         />
       </div>
@@ -77,17 +77,17 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
       {/* Product Details */}
       <div className="flex-1 flex flex-col">
         {/* Brand */}
-        <div className="text-[9px] sm:text-[11px] text-gray-500 font-semibold uppercase tracking-wider mb-0.5">
+        <div className="text-[11px] sm:text-xs text-gray-500 font-semibold uppercase tracking-wider mb-0.5">
           {product.brand?.name || 'Brand'}
         </div>
 
         {/* Title */}
-        <h3 className="text-[11px] sm:text-sm font-medium text-gray-900 line-clamp-2 hover:text-amazon-link transition mb-1 leading-snug min-h-[2rem] sm:min-h-[2.5rem]">
+        <h3 className="text-sm sm:text-base font-semibold text-gray-900 line-clamp-2 hover:text-amazon-link transition mb-1 leading-snug min-h-[2rem] sm:min-h-[2.5rem]">
           {product.title}
         </h3>
 
         {/* Ratings */}
-        <div className="flex items-center gap-1 mb-1.5 sm:mb-2 min-w-0">
+        <div className="flex items-center gap-1 mb-2 sm:mb-3 min-w-0">
           <div className="flex items-center text-amber-500">
             {[...Array(5)].map((_, i) => (
               <Star
@@ -100,10 +100,10 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
               />
             ))}
           </div>
-          <span className="text-[10px] sm:text-xs text-amazon-link font-semibold">
+          <span className="text-xs sm:text-sm text-amazon-link font-semibold">
             {product.rating || 4.5}
           </span>
-          <span className="text-[9px] sm:text-[11px] text-gray-500 truncate">
+          <span className="text-[11px] sm:text-xs text-gray-500 truncate">
             ({(product.reviewCount || 120).toLocaleString()})
           </span>
         </div>
@@ -159,11 +159,11 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-col gap-1 pt-2 border-t border-gray-100">
+      <div className="flex flex-col gap-2 pt-3 border-t border-gray-100">
         <button
           onClick={handleAddToCart}
           disabled={!product.stockQuantity || product.stockQuantity < 1}
-          className="w-full bg-amazon-gold hover:bg-amazon-goldHover text-gray-950 font-bold py-1.5 px-1 sm:px-3 rounded-full text-[10px] sm:text-xs transition shadow-sm flex items-center justify-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-amazon-gold hover:bg-amazon-goldHover text-gray-950 font-bold py-3 px-2 sm:px-3 rounded-xl text-sm sm:text-base transition shadow-sm flex items-center justify-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <ShoppingCart className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>Add to Cart</span>
@@ -172,7 +172,7 @@ export default function ProductCard({ product, onNavigate, imagePriority = false
         <button
           onClick={handleBuyNow}
           disabled={!product.stockQuantity || product.stockQuantity < 1}
-          className="w-full bg-amazon-buyNow hover:bg-amazon-buyNowHover text-gray-950 font-bold py-1.5 px-1 sm:px-3 rounded-full text-[10px] sm:text-xs transition shadow-sm flex items-center justify-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-amazon-buyNow hover:bg-amazon-buyNowHover text-gray-950 font-bold py-3 px-2 sm:px-3 rounded-xl text-sm sm:text-base transition shadow-sm flex items-center justify-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
           <span>Buy Now</span>
