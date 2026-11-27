@@ -30,6 +30,7 @@ public class User {
     @Column(nullable = false)
     private Role role = Role.ROLE_USER;
 
+    @Column(name = "enabled")
     private boolean active = true;
 
     private boolean emailVerified = false;
